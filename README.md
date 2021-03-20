@@ -1,0 +1,1 @@
+# Quadratic-Sequence-Calculator
