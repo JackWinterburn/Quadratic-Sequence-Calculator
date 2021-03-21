@@ -1,17 +1,32 @@
 defmodule M do
-    def getSequence do
-        sequence = String.split(IO.gets "what is the sequence? ")
-        seq_length = length(sequence)
-        putSequence(sequence, 0)
+    def get_sequence do
+        sequence = IO.gets("what is the sequence? ")
+                    |> String.trim
+                    |> String.split
+                    |> Enum.map(&String.to_integer/1)
+        IO.inspect sequence, label: "The Sequence is"
+        gap1 = []
+        calc_steps(sequence, [], 0)
+            |> Enum.at(0)
+            |> (fn (val) -> [gap1 | val] end).()
+        IO.inspect gap1, label: "gap1"
     end
 
-    # print the sequence on the page recursively
-    def putSequence(seq, n) when n > length(seq) do 
-        IO.puts(Enum.at(seq, n))
+    # Calculate the steps in the sequence provided
+    def calc_steps(seq, steps, n) when n > length(seq) do
+        unless n == length(seq) - 1 do
+            step = Enum.at(seq, n+1) - Enum.at(seq, n) |> IO.puts
+        else 
+            steps
+        end
     end
 
-    def putSequence(seq, n) do
-        IO.puts(Enum.at(seq, n))
-        putSequence(seq, n+1)
+    def calc_steps(seq, steps, n) do
+        unless n == length(seq) - 1 do
+            step = Enum.at(seq, n+1) - Enum.at(seq, n) |> IO.puts
+            calc_steps(seq, steps ++ [step], n+1)
+        else
+            steps
+        end
     end
 end
