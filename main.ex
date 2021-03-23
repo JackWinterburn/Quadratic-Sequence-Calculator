@@ -9,7 +9,6 @@ defmodule M do
         calc_steps(sequence, [], 0)
             |> Enum.at(0)
             |> (fn (val) -> [gap1 | val] end).()
-        IO.inspect gap1, label: "gap1"
     end
 
     # Calculate the steps in the sequence provided
