@@ -14,7 +14,7 @@ defmodule M do
     # Calculate the steps in the sequence provided
     def calc_steps(seq, steps, n) when n > length(seq) do
         unless n == length(seq) - 1 do
-            step = Enum.at(seq, n+1) - Enum.at(seq, n) |> IO.puts
+            Enum.at(seq, n+1) - Enum.at(seq, n) |> IO.puts
         else 
             steps
         end
