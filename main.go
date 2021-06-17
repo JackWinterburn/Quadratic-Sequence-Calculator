@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"log"
 	"errors"
+	"time"
 )
 
 var BITSIZE int = 64
@@ -36,6 +37,7 @@ func main() {
 
 	fmt.Printf("\n The nth term is: %vn^2 + %vn + %v \n",
 				nthTerm.HalfSecondDifference,nthTerm.Coefficient, nthTerm.Mutator)
+	time.Sleep(10000)
 }
 
 func getSequence() string {
