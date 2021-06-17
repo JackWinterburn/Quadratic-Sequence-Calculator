@@ -31,13 +31,13 @@ func main() {
 
 	nthTerm.HalfSecondDifference = float64(secondDifference) / 2
 
-	fmt.Printf("\n Half second difference: %f", nthTerm.HalfSecondDifference)
+	fmt.Printf("\n Half second difference: %v", nthTerm.HalfSecondDifference)
 
 	nthTerm.Coefficient, nthTerm.Mutator = getCoefficient(nthTerm.HalfSecondDifference, nthTerm.OrigionalSequence)
 
 	fmt.Printf("\n The nth term is: %vn^2 + %vn + %v \n",
 				nthTerm.HalfSecondDifference,nthTerm.Coefficient, nthTerm.Mutator)
-	time.Sleep(10000)
+	time.Sleep(10000 * time.Millisecond)
 }
 
 func getSequence() string {
@@ -121,13 +121,13 @@ func getCoefficient(hsd float64, ogSequence []float64) (float64, float64) {
 func calcLinearStep(seq []float64, ogs []float64) (float64, float64) {
 	ogs = ogs[:3]
 	diffBetOgAndSec := []float64{ogs[0] - seq[0], ogs[1] - seq[1], ogs[2] - seq[2]}
-	fmt.Printf("\n Sequence of OG Sequence - Linear: %v", diffBetOgAndSec)
+	fmt.Printf("\n OG Sequence - Linear sequence created: %v", diffBetOgAndSec)
 
 	firstStep := diffBetOgAndSec[1] - diffBetOgAndSec[0]
 	secondStep := diffBetOgAndSec[2] - diffBetOgAndSec[1]
 
 	if firstStep == secondStep {
-		fmt.Printf("\n The linear sequence step is %f", firstStep)
+		fmt.Printf("\n The linear sequence step is %v", firstStep)
 		mutator := diffBetOgAndSec[0] - firstStep
 		return firstStep, mutator
 	} else {
